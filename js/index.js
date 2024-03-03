@@ -82,3 +82,50 @@ const toggleClass = (stets) => { //profile status background add or remove
   }
 }
 loadData()
+// latast post show
+const lastPost = async () => {
+  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`)
+  const resJson = await res.json()
+  console.log(resJson);
+  // const data = resJson.posts
+  latastCardShow(resJson)
+}
+//show latast card 
+const latastCardShow = (data) => {
+  const cardContainer2 = document.getElementById('Latest-card')
+  cardContainer2.textContent = ''
+  data.forEach(latastCardData => {
+    const div = document.createElement('div')
+    div.innerHTML = `
+    <div class="card bg-base-100 shadow-xl">
+    <figure><img src="${latastCardData.cover_image}" alt="Album"/></figure>
+    <div class="card-body">
+      <div class="flex text-[#12132D99]">
+        <img class="mr-3" src="icon/FrameDate.svg" alt="">
+        <p id="">${!!latastCardData.author.posted_date?latastCardData.author.posted_date:"No publish date"}</p>
+      </div>
+      <h2 class="card-title">${latastCardData.title}</h2>
+      <p class="my-4">${latastCardData.description}</p>
+
+      <div class="card-actions flex">
+        <div class="avatar">
+          <div class="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src="${latastCardData.
+              profile_image}" alt="">
+              <div class="">" />
+          </div>
+        </div>
+    
+        <div class=" ml-4">
+          <h3 class="font-bold text-[#12132D] text-xl">${latastCardData.author.name}</h3><p class="text-[#12132D99]">${!!latastCardData.author.designation?latastCardData.author.designation:"Unknown"}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    `
+    cardContainer2.appendChild(div)
+  })
+}
+
+
+lastPost()
