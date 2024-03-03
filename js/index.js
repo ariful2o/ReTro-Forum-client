@@ -11,16 +11,16 @@ const showCardData = (data) => { //html card data show
     // console.log(cardData);
     const card = document.createElement('div')
     card.innerHTML = `
-        <div class="card w-full lg:w-[772px] bg-base-100 shadow-xl my-10">
+        <div class="card w-full lg:w-3/4 bg-base-100 shadow-xl my-10">
         <div class="card-body bg-[#F3F3F5] rounded-3xl">
-          <div class="text-[#12132DCC]">
-            <p class="inline"><span># </span> ${cardData.category}</p>
-            <p class="inline ml-8"><span>Author : </span>${!!cardData.author.name ? cardData.author.name : "Unknown"}</p>
-          </div>
+        <div class="text-[#12132DCC] w-full">
+          <p class="inline mr-2"><span># </span> ${cardData.category}</p>
+          <p class="inline-block ml-0 lg:ml-8"><span>Author : </span>${!!cardData.author.name ? cardData.author.name : "Unknown"}</p>
+        </div>
           <a href="#"
             class="flex flex-col items-center  border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 my-4">
             <div class="relative">
-                <img class="w-20 h-20 rounded-full ring-2 ring-red-300" src="${cardData.image}" alt="">
+                <img id="card-img" class="w-20 h-20 rounded-full ring ring-offset-green-100 ring-offset-2 hover:ring-0" src="${cardData.image}" alt="">
                 <span id="profile-dote" class="top-0 left-14 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
             </div>
             <div class="flex flex-col justify-between p-4 leading-normal">
@@ -79,6 +79,10 @@ const toggleClass = (stets) => { //profile status background add or remove
     const profile = document.getElementById('profile-dote')
     profile.classList.remove('bg-green-400')
     profile.classList.add('bg-red-400')
+
+    const cardImage = document.getElementById('card-img')
+    cardImage.classList.remove('ring-green-400')
+    cardImage.classList.add('ring-red-400')
   }
 }
 loadData()
@@ -109,7 +113,7 @@ const latastCardShow = (data) => {
 
       <div class="card-actions flex">
         <div class="avatar">
-          <div class="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div class="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 hover:ring-0">
             <img src="${latastCardData.
         profile_image}" alt="">
               <div class="">" />

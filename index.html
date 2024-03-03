@@ -20,7 +20,7 @@
   <header>
     <!-- nabar  -->
     <section>
-      <div class="navbar bg-base-100">
+      <div class="navbar bg-base-100 ">
         <div class="navbar-start">
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -30,24 +30,40 @@
               </svg>
             </div>
             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a><img src="icon/Frame 2.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 3.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 5.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 4.png" alt=""></a></li>
+              <div class="tooltip tooltip-top" data-tip="Home">
+                <li><a><img src="icon/Frame 2.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="tooltip">
+                <li><a><img src="icon/Frame 3.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="Vector">
+                <li><a><img src="icon/Frame 5.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="Contacts">
+                <li><a><img src="icon/Frame 4.png" alt=""></a></li>
+              </div>
             </ul>
           </div>
           <a class="btn btn-ghost text-xl">ReTro</a>
         </div>
-        <div class="navbar-end flex">
+        <div class="navbar-end flex mt-6">
           <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-              <li><a><img src="icon/Frame 2.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 3.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 5.png" alt=""></a></li>
-              <li><a><img src="icon/Frame 4.png" alt=""></a></li>
+              <div class="tooltip tooltip-top" data-tip="Home">
+                <li><a><img src="icon/Frame 2.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="tooltip">
+                <li><a><img src="icon/Frame 3.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="Vector">
+                <li><a><img src="icon/Frame 5.png" alt=""></a></li>
+              </div>
+              <div class="tooltip tooltip-top" data-tip="Contacts">
+                <li><a><img src="icon/Frame 4.png" alt=""></a></li>
+              </div>
             </ul>
           </div>
-          <a class="btn bg-[#797DFC] rounded-3xl px-10 py-4">Sign In</a>
+          <a class="btn bg-[#797DFC] rounded-3xl px-10 py-4 ring-offset-2 hover:ring-2">Sign In</a>
         </div>
       </div>
     </section>
@@ -137,10 +153,10 @@
       <!-- Dianamic data Show -->
       <div class="flex flex-col lg:flex-row gap-16 m-2 lg:m-8">
         <!-- left section -->
-        <div id="card-container" class="">
+        <div id="card-container" class="w-full lg:w-3/4">
         </div>
         <!-- right section -->
-        <div class="w-full lg:w-[380px]">
+        <div class="w-full lg:w-1/4 mx-auto">
           <div class="card bg-[#12132D0D] text-primary-content">
             <div class="card-body">
               <div class="flex justify-between">
@@ -167,7 +183,7 @@
             <h1 class="text-4xl lg:text-7xl font-black mulish">Join Our Forum</h1>
             <p class="my-6 lg:my-10">Share your favorite opinion and win and wp forum coffee mug! Yes, you can run unit
               tests and view the results directly within the app. </p>
-            <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-[#797DFC]">Registered Now</button>
+            <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-[#797DFC] ring-offset-2 hover:ring-2">Registered Now</button>
           </div>
           <!-- banner right Section -->
           <div class="flex justify-center items-center w-full lg:w-1/2 ">
