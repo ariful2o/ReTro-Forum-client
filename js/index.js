@@ -43,7 +43,7 @@ const showCardData = (data) => { //html card data show
     cardContainer.appendChild(card);
     toggleClass(cardData.isActive)
   });
-
+  loadingSpanerHide('loading-container')
 }
 function incrementCounter() { // increment click count for a specific card
   const clickCountSpan = document.getElementById(`mark-as-read`);
@@ -57,8 +57,18 @@ const search = () => {//search function
   const searchInput = document.getElementById('default-search')
   const searchValue = searchInput.value
   loadData(searchValue)
+  loadingSpanerShow('loading-container')
   // console.log(searchValue);
 }
+const loadingSpanerShow=(getElementById)=>{ //loading spaner show
+  const loading = document.getElementById(getElementById)
+  loading.classList.remove('hidden')
+}
+const loadingSpanerHide=(getElementById)=>{ //loading spaner hide
+  const loading = document.getElementById(getElementById)
+  loading.classList.add('hidden')
+}
+
 const mainButton = (titel, viewCount) => { //card button click
   // console.log(titel,viewCount);
   const emailCard = document.getElementById('email-card-container');
@@ -90,8 +100,8 @@ loadData()
 const lastPost = async () => {
   const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`)
   const resJson = await res.json()
-  console.log(resJson);
-  // const data = resJson.posts
+  // console.log(resJson);
+  loadingSpanerShow('loading-container2')
   latastCardShow(resJson)
 }
 //show latast card 
@@ -129,5 +139,6 @@ const latastCardShow = (data) => {
     `
     cardContainer2.appendChild(div)
   })
+  loadingSpanerHide('loading-container2')
 }
 lastPost()
