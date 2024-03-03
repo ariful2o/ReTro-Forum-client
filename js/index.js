@@ -1,15 +1,16 @@
-const loadData = async () => { //all card data show
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts')
-    const resJson = await res.json()
-    const data = resJson.posts
-    showCardData(data)
+const loadData = async (searchValue = 'comedy') => { //all card data show
+  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchValue}`)
+  const resJson = await res.json()
+  const data = resJson.posts
+  showCardData(data)
 }
 const showCardData = (data) => { //html card data show
-    data.forEach(cardData => {
-        console.log(cardData);
-        const cardContainer = document.getElementById('card-container')
-        const card = document.createElement('div')
-        card.innerHTML = `
+  const cardContainer = document.getElementById('card-container')
+  cardContainer.textContent = ''
+  data.forEach(cardData => {
+    // console.log(cardData);
+    const card = document.createElement('div')
+    card.innerHTML = `
         <div class="card w-full lg:w-[772px] bg-base-100 shadow-xl my-10">
         <div class="card-body bg-[#F3F3F5] rounded-3xl">
           <div class="flex text-[#12132DCC]">
@@ -29,26 +30,40 @@ const showCardData = (data) => { //html card data show
           </a>
           <hr>
           <div class="flex justify-between items-center">
-            <div class="flex gap-2">
+            <div class="flex gap-0 lg:gap-2">
               <img src="icon/tabler-icon-message-2.png" alt=""><span id="">${cardData.comment_count}</span>
               <img class="ml-2 lg:ml-10" src="icon/tabler-icon-eye.png" alt=""><span id="">${cardData.view_count}</span>
               <img class="ml-2 lg:ml-10" src="icon/tabler-icon-clock-hour-9.png" alt=""><span id="">${cardData.posted_time}</span>
             </div>
-            <div class=""><button onclick="mainButton('${cardData.title}','${cardData.view_count}')"><img src="icon/email 1.png" alt=""></button></div>
+            <div class=""><button class="clickButton" onclick="mainButton('${cardData.title}','${cardData.view_count}')"><img src="icon/email 1.png" alt=""></button></div>
           </div>
         </div>
       
         `
-        cardContainer.appendChild(card);
-        toggleClass(cardData.isActive)
-    });
+    cardContainer.appendChild(card);
+    toggleClass(cardData.isActive)
+  });
 
 }
+function incrementCounter() { // increment click count for a specific card
+  const clickCountSpan = document.getElementById(`mark-as-read`);
+  let clickCount = parseInt(clickCountSpan.textContent) || 0;
+  clickCount++;
+  clickCountSpan.textContent = clickCount;
+}
+
+
+const search = () => {//search function 
+  const searchInput = document.getElementById('default-search')
+  const searchValue = searchInput.value
+  loadData(searchValue)
+  // console.log(searchValue);
+}
 const mainButton = (titel, viewCount) => { //card button click
-    // console.log(titel,viewCount);
-    const emailCard = document.getElementById('email-card-container');
-    const div = document.createElement('div')
-    div.innerHTML = `
+  // console.log(titel,viewCount);
+  const emailCard = document.getElementById('email-card-container');
+  const div = document.createElement('div')
+  div.innerHTML = `
     <div class="flex justify-between my-8">
         <h4 class="text-[#12132D]">${titel}</h4>
         <div class="flex gap-2 items-center ml-24 text-[#12132D99]">
@@ -56,19 +71,14 @@ const mainButton = (titel, viewCount) => { //card button click
         </div>
     </div>
     `
-    emailCard.appendChild(div)
-    markCount()
+  emailCard.appendChild(div)
+  incrementCounter()
 }
-const toggleClass=(stets)=>{
-  if (stets=== false) {
-    const profile=document.getElementById('profile-dote')
+const toggleClass = (stets) => { //profile status background add or remove
+  if (stets === false) {
+    const profile = document.getElementById('profile-dote')
     profile.classList.remove('bg-green-400')
     profile.classList.add('bg-red-400')
   }
-}
-let count = 0
-const markCount = () => {
-    document.getElementById('mark-as-read').innerHTML = (count + 1)
-    console.log(count);
 }
 loadData()

@@ -76,7 +76,7 @@
                 <input type="search" id="default-search"
                   class="block mx-auto w-full lg:w-3/4 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search " required />
-                <button type="submit"
+                <button onclick="search()" type="submit"
                   class="text-white absolute end-1 lg:end-32 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
               </div>
             </div>
@@ -130,7 +130,7 @@
   <main>
     <section>
       <div class="container">
-        <h2 class="text-center text-6xl text-black font-bold">Let’s Discuss</h2>
+        <h2 class="text-center text-3xl lg:text-6xl text-black font-bold">Let’s Discuss</h2>
         <p class="text-center text-[#12132D99] my-8">Yes, you can run unit tests and view the results directly within
           the app. The <br>integrated testing features allow for a streamlined .</p>
       </div>
@@ -140,8 +140,8 @@
         <div id="card-container" class="">
         </div>
         <!-- right section -->
-        <div class="w-full lg:w-[380px] h-96">
-          <div class="card w-96 bg-[#12132D0D] text-primary-content">
+        <div class="w-full lg:w-[380px]">
+          <div class="card bg-[#12132D0D] text-primary-content">
             <div class="card-body">
               <div class="flex justify-between">
                 <h4 class=" font-bold text-xl">title</h4>
@@ -151,7 +151,7 @@
                 </div>
               </div>
               <!-- dainamic data -->
-              <div id="email-card-container" class="w-full"></div>
+              <div id="email-card-container" class="max-w-full p-0" style="padding: 0;"></div>
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@
     <!-- leattes post -->
     <section>
       <div class="container">
-        <h2 class="text-center text-6xl text-black font-bold">Latest Posts</h2>
+        <h2 class="text-center text-3xl lg:text-6xl text-black font-bold">Latest Posts</h2>
         <p class="text-center text-[#12132D99] my-8">Yes, you can run unit tests and view the results directly within
           the app. The integrated testing features allow for a streamlined .</p>
       </div>
