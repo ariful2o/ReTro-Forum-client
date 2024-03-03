@@ -19,8 +19,8 @@ const showCardData = (data) => { //html card data show
           <a href="#"
             class="flex flex-col items-center  border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 my-4">
             <div class="relative">
-                <img class="w-20 h-20 rounded-full" src="${cardData.image}" alt="">
-                <span class="top-0 left-14 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                <img class="w-20 h-20 rounded-full ring-2 ring-red-300" src="${cardData.image}" alt="">
+                <span id="profile-dote" class="top-0 left-14 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
             </div>
             <div class="flex flex-col justify-between p-4 leading-normal">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-[#12132D]">${cardData.title}</h5>
@@ -40,6 +40,7 @@ const showCardData = (data) => { //html card data show
       
         `
         cardContainer.appendChild(card);
+        toggleClass(cardData.isActive)
     });
 
 }
@@ -57,6 +58,13 @@ const mainButton = (titel, viewCount) => { //card button click
     `
     emailCard.appendChild(div)
     markCount()
+}
+const toggleClass=(stets)=>{
+  if (stets=== false) {
+    const profile=document.getElementById('profile-dote')
+    profile.classList.remove('bg-green-400')
+    profile.classList.add('bg-red-400')
+  }
 }
 let count = 0
 const markCount = () => {
