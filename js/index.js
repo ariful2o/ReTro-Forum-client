@@ -13,9 +13,9 @@ const showCardData = (data) => { //html card data show
     card.innerHTML = `
         <div class="card w-full lg:w-[772px] bg-base-100 shadow-xl my-10">
         <div class="card-body bg-[#F3F3F5] rounded-3xl">
-          <div class="flex text-[#12132DCC]">
-            <p class=""><span># </span> ${cardData.category}</p>
-            <p class=""><span>Author :</span>${cardData.author.name}</p>
+          <div class="text-[#12132DCC]">
+            <p class="inline"><span># </span> ${cardData.category}</p>
+            <p class="inline ml-8"><span>Author : </span>${!!cardData.author.name ? cardData.author.name : "Unknown"}</p>
           </div>
           <a href="#"
             class="flex flex-col items-center  border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 my-4">
@@ -97,12 +97,12 @@ const latastCardShow = (data) => {
   data.forEach(latastCardData => {
     const div = document.createElement('div')
     div.innerHTML = `
-    <div class="card bg-base-100 shadow-xl">
-    <figure><img src="${latastCardData.cover_image}" alt="Album"/></figure>
+    <div class="card w-full bg-base-100 shadow-xl">
+    <figure><img class="rounded-2xl" src="${latastCardData.cover_image}" alt="Album"/></figure>
     <div class="card-body">
       <div class="flex text-[#12132D99]">
         <img class="mr-3" src="icon/FrameDate.svg" alt="">
-        <p id="">${!!latastCardData.author.posted_date?latastCardData.author.posted_date:"No publish date"}</p>
+        <p id="">${!!latastCardData.author.posted_date ? latastCardData.author.posted_date : "No publish date"}</p>
       </div>
       <h2 class="card-title">${latastCardData.title}</h2>
       <p class="my-4">${latastCardData.description}</p>
@@ -111,13 +111,13 @@ const latastCardShow = (data) => {
         <div class="avatar">
           <div class="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src="${latastCardData.
-              profile_image}" alt="">
+        profile_image}" alt="">
               <div class="">" />
           </div>
         </div>
     
         <div class=" ml-4">
-          <h3 class="font-bold text-[#12132D] text-xl">${latastCardData.author.name}</h3><p class="text-[#12132D99]">${!!latastCardData.author.designation?latastCardData.author.designation:"Unknown"}</p>
+          <h3 class="font-bold text-[#12132D] text-xl">${latastCardData.author.name}</h3><p class="text-[#12132D99]">${!!latastCardData.author.designation ? latastCardData.author.designation : "Unknown"}</p>
         </div>
       </div>
     </div>
@@ -126,6 +126,4 @@ const latastCardShow = (data) => {
     cardContainer2.appendChild(div)
   })
 }
-
-
 lastPost()
